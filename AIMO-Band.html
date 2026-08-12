@@ -86,19 +86,20 @@
     [data-dossier-media]{ max-width:400px; }
   }
 
-  .aimo-burger{ display:none; position:absolute; right:16px; top:50%; transform:translateY(-50%); width:42px; height:42px; border:0; background:transparent; cursor:pointer; padding:0; z-index:2; }
-  .aimo-burger .bx{ position:relative; display:block; width:28px; height:18px; margin:0 auto; }
-  .aimo-burger .bx i{ position:absolute; left:0; right:0; height:2.5px; background:#f2f1f5; box-shadow:0 0 8px rgba(124,53,255,.85); transition:transform .25s ease, opacity .18s, top .25s ease, background .2s; }
-  .aimo-burger .bx i:nth-child(1){ top:0; } .aimo-burger .bx i:nth-child(2){ top:8px; } .aimo-burger .bx i:nth-child(3){ top:16px; }
-  .aimo-burger[data-open="1"] .bx i:nth-child(1){ top:8px; transform:rotate(45deg); background:#9d5cff; }
+
+  .aimo-burger{ display:none; position:absolute; right:14px; top:50%; transform:translateY(-50%); width:34px; height:34px; border:0; background:transparent; cursor:pointer; padding:0; z-index:2; }
+  .aimo-burger .bx{ position:relative; display:block; width:21px; height:13px; margin:0 auto; }
+  .aimo-burger .bx i{ position:absolute; left:0; right:0; height:2px; background:#f2f1f5; box-shadow:0 0 8px rgba(124,53,255,.85); transition:transform .25s ease, opacity .18s, top .25s ease, background .2s; }
+  .aimo-burger .bx i:nth-child(1){ top:0; } .aimo-burger .bx i:nth-child(2){ top:5.5px; } .aimo-burger .bx i:nth-child(3){ top:11px; }
+  .aimo-burger[data-open="1"] .bx i:nth-child(1){ top:5.5px; transform:rotate(45deg); background:#9d5cff; }
   .aimo-burger[data-open="1"] .bx i:nth-child(2){ opacity:0; }
-  .aimo-burger[data-open="1"] .bx i:nth-child(3){ top:8px; transform:rotate(-45deg); background:#9d5cff; }
+  .aimo-burger[data-open="1"] .bx i:nth-child(3){ top:5.5px; transform:rotate(-45deg); background:#9d5cff; }
   .aimo-menu{ display:none; position:fixed; inset:0; z-index:150; background:rgba(5,5,7,.97); backdrop-filter:blur(10px); flex-direction:column; align-items:center; justify-content:center; gap:20px; }
   .aimo-menu[data-open="1"]{ display:flex; }
   .aimo-menu img{ width:72px; height:auto; margin-bottom:14px; filter:drop-shadow(0 0 18px rgba(124,53,255,.6)); }
   .aimo-menu a{ font-family:Anton, sans-serif; text-transform:uppercase; font-size:2.1rem; letter-spacing:.02em; color:#f2f1f5; text-decoration:none; text-shadow:0 0 20px rgba(124,53,255,.3); }
   .aimo-menu a.on, .aimo-menu a:hover{ color:#9d5cff; }
-  @media (max-width:860px){ .aimo-navgroup{ display:none !important; } .aimo-burger{ display:block !important; } }
+  @media (max-width:860px){ .aimo-navgroup{ display:none !important; } .aimo-burger{ display:block !important; } header img[alt="AIMO"]{ height:46px !important; } }
 </style>
 </helmet>
 <div style="position:relative; min-height:100vh; isolation:isolate;">
@@ -117,7 +118,7 @@
         <a href="./AIMO-Music.html" style="color:#c7c1d0; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#9d5cff;">Music</a>
         <a href="./AIMO-Videos.html" style="color:#c7c1d0; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#9d5cff;">Videos</a>
       </nav>
-      <a href="./AIMO-Home.html" style="display:inline-flex; align-items:center; justify-self:center;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite;"><img src="./assets/aimo-face.png" alt="AIMO" style="height:62px; width:auto; display:block; filter:drop-shadow(0 0 16px rgba(124,53,255,.55));"></a>
+      <a href="./AIMO-Home.html" style="display:inline-flex; align-items:center; justify-self:center; grid-column:2;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite;"><img src="./assets/aimo-face.png" alt="AIMO" style="height:62px; width:auto; display:block; filter:drop-shadow(0 0 16px rgba(124,53,255,.55));"></a>
       <nav class="aimo-navgroup" aria-label="Secondary" style="display:flex; gap:24px; justify-content:flex-end; font-family:'IBM Plex Mono',monospace; font-size:.74rem; text-transform:uppercase; letter-spacing:.14em;">
         <a href="./AIMO-Band.html" style="color:#9d5cff; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#c5a8ff;">Band</a>
         <a href="./AIMO-Contact.html" style="color:#c7c1d0; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#9d5cff;">Contact</a>
