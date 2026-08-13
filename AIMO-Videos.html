@@ -142,7 +142,7 @@
     <div style="width:min(1180px, calc(100% - 40px)); margin-inline:auto;">
       <a href="#" style="position:relative; display:block; text-decoration:none; color:#f2f1f5; border:1px solid rgba(157,92,255,.26); overflow:hidden; box-shadow:0 26px 80px rgba(0,0,0,.55);" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; border-color:#9d5cff;">
         <div style="aspect-ratio:16/8; position:relative;">
-          <image-slot id="vid-feat" shape="rect" fit="cover" src="./assets/frame-02-mpc-pads.png" placeholder="Featured video still — 16:8"></image-slot>
+          <image-slot id="vid-feat" shape="rect" fit="cover" src="./assets/band-park.jpg" placeholder="Featured video still — 16:8"></image-slot>
           <div aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(5,5,7,.8), rgba(5,5,7,.15) 60%, transparent); pointer-events:none;"></div>
           <div style="position:absolute; left:clamp(20px,4vw,44px); bottom:clamp(20px,4vw,40px); pointer-events:none;">
             <div style="font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.14em; color:#9d5cff; font-size:.72rem;">▶ NOW PLAYING</div>
@@ -188,13 +188,13 @@ class Component extends DCLogic {
   renderVals() {
     return {
       videos: [
-        { title: "Terabyte Tammy", meta: "Official Video · 3:58", tag: "MV", src: "./assets/tt-square.png", slot: "vid-tt", ph: "Video still 16:10" },
-        { title: "No Signal", meta: "Official Video · 4:08", tag: "MV", src: "./assets/frame-03-server-bokeh.png", slot: "vid-1", ph: "Video still 16:10" },
-        { title: "Memory Leak", meta: "Live Visual · 5:01", tag: "LIVE", src: "./assets/frame-06-back-corridor-bass.png", slot: "vid-2", ph: "Video still 16:10" },
-        { title: "Render Distance", meta: "Lyric Video · 3:14", tag: "LYRIC", src: "./assets/frame-05-kaleidoscope.png", slot: "vid-3", ph: "Video still 16:10" },
-        { title: "Safe Mode", meta: "Performance · 2:57", tag: "LIVE", src: "./assets/frame-01-synth-hands.png", slot: "vid-4", ph: "Video still 16:10" },
-        { title: "Force Quit", meta: "Behind the Scenes · 6:20", tag: "BTS", src: "./assets/frame-09-front-corridor.png", slot: "vid-5", ph: "Video still 16:10" },
-        { title: "User Not Found", meta: "AI Animation · 4:12", tag: "MV", src: "./assets/frame-07-bass-fretboard.png", slot: "vid-6", ph: "Video still 16:10" },
+        { title: "Terabyte Tammy", meta: "Official Video · 3:58", tag: "MV", src: "./assets/tt-square.jpg", slot: "vid-tt", ph: "Video still 16:10" },
+        { title: "No Signal", meta: "Official Video · 4:08", tag: "MV", src: "./assets/frame-03-server-bokeh.jpg", slot: "vid-1", ph: "Video still 16:10" },
+        { title: "Memory Leak", meta: "Live Visual · 5:01", tag: "LIVE", src: "./assets/frame-06-back-corridor-bass.jpg", slot: "vid-2", ph: "Video still 16:10" },
+        { title: "Render Distance", meta: "Lyric Video · 3:14", tag: "LYRIC", src: "./assets/frame-05-kaleidoscope.jpg", slot: "vid-3", ph: "Video still 16:10" },
+        { title: "Safe Mode", meta: "Performance · 2:57", tag: "LIVE", src: "./assets/frame-01-synth-hands.jpg", slot: "vid-4", ph: "Video still 16:10" },
+        { title: "Force Quit", meta: "Behind the Scenes · 6:20", tag: "BTS", src: "./assets/frame-09-front-corridor.jpg", slot: "vid-5", ph: "Video still 16:10" },
+        { title: "User Not Found", meta: "AI Animation · 4:12", tag: "MV", src: "./assets/frame-07-bass-fretboard.jpg", slot: "vid-6", ph: "Video still 16:10" },
       ],
     };
   }

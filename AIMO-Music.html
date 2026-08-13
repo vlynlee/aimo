@@ -142,7 +142,7 @@
   <section style="position:relative; padding-block:clamp(40px,6vw,80px);">
     <div style="width:min(1180px, calc(100% - 40px)); margin-inline:auto; display:grid; grid-template-columns:minmax(0,380px) minmax(0,1fr); gap:clamp(24px,4vw,56px); align-items:start;">
       <div style="position:sticky; top:96px; border:1px solid rgba(157,92,255,.26); box-shadow:0 26px 80px rgba(0,0,0,.55);">
-        <div style="aspect-ratio:1/1;"><image-slot id="music-ep" shape="rect" fit="cover" src="./assets/tt-square.png" placeholder="Robot Feelings EP art (1:1)"></image-slot></div>
+        <div style="aspect-ratio:1/1;"><image-slot id="music-ep" shape="rect" fit="cover" src="./assets/aimo-square.jpg" placeholder="Robot Feelings EP art (1:1)"></image-slot></div>
         <div style="padding:20px; background:#0d0b13; border-top:1px solid rgba(157,92,255,.26);">
           <div style="font-family:Anton,sans-serif; text-transform:uppercase; font-size:2rem; line-height:1;">Robot Feelings</div>
           <div style="font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#9b96a6; text-transform:uppercase; letter-spacing:.12em; margin-top:8px;">EP · 2026 · 12 tracks · 41:17</div>
@@ -151,29 +151,12 @@
       </div>
       <div style="border-top:1px solid rgba(157,92,255,.26);">
         <sc-for list="{{ tracks }}" as="t" hint-placeholder-count="12">
-          <div style="display:grid; grid-template-columns:52px minmax(0,1fr) auto auto; gap:18px; align-items:center; padding:15px 0; border-bottom:1px solid rgba(157,92,255,.26);">
+          <div style="display:grid; grid-template-columns:40px 50px minmax(0,1fr) auto auto; gap:16px; align-items:center; padding:12px 0; border-bottom:1px solid rgba(157,92,255,.26);">
             <span style="font-family:'IBM Plex Mono',monospace; color:#9d5cff; font-size:.82rem;">{{ t.num }}</span>
+            <div style="width:50px; aspect-ratio:9/16; position:relative; overflow:hidden; border:1px solid rgba(157,92,255,.26);"><image-slot id="{{ t.slot }}" shape="rect" fit="cover" src="{{ t.art }}" placeholder="art"></image-slot></div>
             <span style="font-family:Anton,sans-serif; font-size:clamp(1.1rem,2.4vw,1.75rem); text-transform:uppercase;">{{ t.name }}</span>
             <span style="font-family:'IBM Plex Mono',monospace; color:#9b96a6; font-size:.72rem;">{{ t.len }}</span>
             <a href="#" style="display:inline-flex; align-items:center; justify-content:center; min-height:38px; padding:7px 14px; border:1px solid rgba(255,255,255,.2); color:#c7c1d0; background:transparent; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; border-color:#9d5cff; color:#9d5cff;">Play</a>
-          </div>
-        </sc-for>
-      </div>
-    </div>
-  </section>
-
-  <section style="position:relative; isolation:isolate; overflow:hidden; padding-block:clamp(56px,8vw,110px); border-top:1px solid rgba(157,92,255,.14);">
-    <div style="width:min(1180px, calc(100% - 40px)); margin-inline:auto;">
-      <div style="font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.18em; color:#9d5cff; font-size:.78rem;">// RELEASE LOG</div>
-      <h2 style="margin:14px 0 30px; font-family:Anton,sans-serif; text-transform:uppercase; line-height:.94; letter-spacing:-.01em; font-size:clamp(2rem,5vw,4rem); text-shadow:0 0 34px rgba(124,53,255,.3); animation:aimo-glitchpulse 5.5s infinite;">Singles &amp; Releases</h2>
-      <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px;">
-        <sc-for list="{{ releases }}" as="r" hint-placeholder-count="4">
-          <div style="border:1px solid rgba(157,92,255,.26); background:#0d0b13;">
-            <div style="aspect-ratio:1/1; position:relative;"><image-slot id="{{ r.slot }}" shape="rect" fit="cover" src="{{ r.src }}" placeholder="{{ r.ph }}"></image-slot></div>
-            <div style="padding:14px;">
-              <div style="font-family:Anton,sans-serif; text-transform:uppercase; font-size:1.15rem; line-height:1.05;">{{ r.title }}</div>
-              <div style="margin-top:6px; color:#9b96a6; font-family:'IBM Plex Mono',monospace; font-size:.66rem; text-transform:uppercase; letter-spacing:.06em;">{{ r.meta }}</div>
-            </div>
           </div>
         </sc-for>
       </div>
@@ -194,25 +177,18 @@ class Component extends DCLogic {
   renderVals() {
     return {
       tracks: [
-        { num: "01", name: "Render Distance", len: "3:14" },
-        { num: "02", name: "Reboot My Heart", len: "3:42" },
-        { num: "03", name: "No Signal", len: "4:08" },
-        { num: "04", name: "Safe Mode", len: "2:57" },
-        { num: "05", name: "Memory Leak", len: "5:01" },
-        { num: "06", name: "Home Is a Data Center", len: "3:33" },
-        { num: "07", name: "Cached Feelings", len: "3:20" },
-        { num: "08", name: "Access Denied", len: "2:44" },
-        { num: "09", name: "Force Quit", len: "3:58" },
-        { num: "10", name: "User Not Found", len: "4:12" },
-        { num: "11", name: "Home Directory", len: "2:39" },
-        { num: "12", name: "Terabyte Tammy", len: "1:29" },
-      ],
-      releases: [
-        { title: "Terabyte Tammy", meta: "Lead Single · 2026", src: "./assets/tt-square.png", slot: "music-r0", ph: "Single art 1:1" },
-        { title: "Reboot My Heart", meta: "Single · 2026", src: "./assets/frame-03-server-bokeh.png", slot: "music-r1", ph: "Single art 1:1" },
-        { title: "No Signal", meta: "Single · 2025", src: "./assets/frame-05-kaleidoscope.png", slot: "music-r2", ph: "Single art 1:1" },
-        { title: "Access Denied", meta: "Single · 2025", src: "./assets/frame-08-guitar-lowangle.png", slot: "music-r3", ph: "Single art 1:1" },
-        { title: "Force Quit", meta: "Demo · 2024", src: "./assets/frame-09-front-corridor.png", slot: "music-r4", ph: "Single art 1:1" },
+        { num: "01", name: "Render Distance", len: "3:14", slot: "mt1", art: "./assets/cover-render-distance.jpg" },
+        { num: "02", name: "Reboot My Heart", len: "3:42", slot: "mt2", art: "./assets/cover-reboot-my-heart.jpg" },
+        { num: "03", name: "No Signal", len: "4:08", slot: "mt3", art: "./assets/cover-no-signal.jpg" },
+        { num: "04", name: "Safe Mode", len: "2:57", slot: "mt4", art: "./assets/aimo-square.jpg" },
+        { num: "05", name: "Memory Leak", len: "5:01", slot: "mt5", art: "./assets/cover-memory-leak.jpg" },
+        { num: "06", name: "Home Is a Data Center", len: "3:33", slot: "mt6", art: "./assets/aimo-square.jpg" },
+        { num: "07", name: "Cached Feelings", len: "3:20", slot: "mt7", art: "./assets/aimo-square.jpg" },
+        { num: "08", name: "Access Denied", len: "2:44", slot: "mt8", art: "./assets/aimo-square.jpg" },
+        { num: "09", name: "Force Quit", len: "3:58", slot: "mt9", art: "./assets/cover-force-quit.jpg" },
+        { num: "10", name: "User Not Found", len: "4:12", slot: "mt10", art: "./assets/cover-user-not-found.jpg" },
+        { num: "11", name: "Home Directory", len: "2:39", slot: "mt11", art: "./assets/cover-home-directory.jpg" },
+        { num: "12", name: "Terabyte Tammy", len: "1:29", slot: "mt12", art: "./assets/cover-terabyte-tammy.jpg" },
       ],
     };
   }

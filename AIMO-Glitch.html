@@ -58,11 +58,17 @@
   @keyframes aimo-slice { 0%,86%,100%{opacity:0;top:0;transform:translateX(0);} 87%{opacity:.85;top:24%;transform:translateX(-16px);} 89%{opacity:.5;top:63%;transform:translateX(12px);} 91%{opacity:.9;top:44%;transform:translateX(-7px);} 93%{opacity:0;} }
   @keyframes aimo-glitchpulse { 0%,45%,52%,100%{text-shadow:0 0 34px rgba(124,53,255,.3);transform:translateX(0);} 47%{text-shadow:3px 0 rgba(211,76,255,.9),-3px 0 rgba(0,225,255,.75),0 0 34px rgba(124,53,255,.4);transform:translateX(1px);} 49%{text-shadow:-3px 0 rgba(211,76,255,.9),3px 0 rgba(0,225,255,.75),0 0 34px rgba(124,53,255,.4);transform:translateX(-1px);} }
   @keyframes aimo-hoverglitch { 0%{transform:translate(0,0);filter:none;text-shadow:none;} 15%{transform:translate(-2px,1px);filter:hue-rotate(-20deg) saturate(1.5);text-shadow:2px 0 rgba(211,76,255,.9),-2px 0 rgba(0,225,255,.7);} 30%{transform:translate(2px,-1px);filter:none;} 45%{transform:translate(-1px,-2px);filter:contrast(1.3) hue-rotate(18deg);text-shadow:-2px 0 rgba(211,76,255,.9),2px 0 rgba(0,225,255,.7);} 60%{transform:translate(2px,1px);filter:none;text-shadow:none;} 80%{transform:translate(-1px,1px);filter:saturate(1.4);} 100%{transform:translate(0,0);filter:none;} }
+  @keyframes aimo-onlinepulse { 0%,100%{opacity:1;} 50%{opacity:.4;} }
   @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; } html { scroll-behavior: auto; } }
   /* mq-mobile */
   @media (max-width: 900px){
     header nav a{ white-space:nowrap; }
     header nav{ gap:16px !important; }
+  }
+  @media (max-width: 860px){
+    [style*="minmax(0,1fr) minmax(0,1.05fr)"]{ grid-template-columns:1fr !important; min-height:0 !important; }
+    [style*="minmax(0,1.4fr) minmax(0,1fr)"]{ grid-template-columns:1fr !important; }
+    [style*="min-height:52vh"]{ min-height:42vh !important; border-right:0 !important; border-bottom:1px solid rgba(157,92,255,.2) !important; }
   }
   @media (max-width: 640px){
     header > div{ height:66px !important; gap:8px !important; }
@@ -133,17 +139,17 @@
 
   <section style="position:relative; padding-top:92px;">
     <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.05fr); gap:0; min-height:82vh; align-items:stretch;">
-      <div style="position:relative; min-height:52vh; border-right:1px solid rgba(157,92,255,.2);"><image-slot id="{{ m.heroSlot }}" shape="rect" fit="cover" src="{{ m.heroSrc }}" placeholder="{{ m.name }} hero portrait (portrait/4:5)"></image-slot></div>
+      <div style="position:relative; min-height:52vh; border-right:1px solid rgba(157,92,255,.2);">{{ m.heroImg }}</div>
       <div style="display:flex; flex-direction:column; justify-content:center; padding:clamp(28px,5vw,72px) clamp(20px,4vw,56px);">
-        <a href="./AIMO-Band.html" style="font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:#9b96a6; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#9d5cff;">← All units</a>
-        <div style="font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.2em; color:#9d5cff; font-size:.78rem; margin-top:22px;">{{ m.unit }} // ONLINE</div>
+        <a href="./AIMO-Band.html#roster" style="font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:#9b96a6; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#9d5cff;">← All units</a>
+        <div style="font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.2em; color:#9d5cff; font-size:.78rem; margin-top:22px;">{{ m.unit }} // <span style="color:#46e37a; text-shadow:0 0 8px rgba(70,227,122,.55);"><span style="display:inline-block; width:7px; height:7px; border-radius:50%; background:#46e37a; box-shadow:0 0 8px rgba(70,227,122,.9); margin-right:6px; vertical-align:middle; animation:aimo-onlinepulse 1.8s ease-in-out infinite;"></span>ONLINE</span></div>
         <div style="position:relative; margin:8px 0 0; line-height:.82;">
           <span aria-hidden="true" style="position:absolute; inset:0; font-family:Anton,sans-serif; font-size:clamp(3.4rem,10vw,7.5rem); text-transform:uppercase; letter-spacing:-.02em; color:#d34cff; opacity:.8; animation:aimo-gtop 3s infinite steps(2,end);">{{ m.name }}</span>
           <span aria-hidden="true" style="position:absolute; inset:0; font-family:Anton,sans-serif; font-size:clamp(3.4rem,10vw,7.5rem); text-transform:uppercase; letter-spacing:-.02em; color:#7c35ff; opacity:.8; animation:aimo-gbot 3.4s infinite steps(2,end);">{{ m.name }}</span>
           <h1 style="position:relative; margin:0; font-family:Anton,sans-serif; font-size:clamp(3.4rem,10vw,7.5rem); text-transform:uppercase; letter-spacing:-.02em; color:#f2f1f5; text-shadow:0 0 30px rgba(124,53,255,.3);">{{ m.name }}</h1>
         </div>
         <div style="font-family:'IBM Plex Mono',monospace; color:#c5a8ff; font-size:.9rem; text-transform:uppercase; letter-spacing:.08em; margin-top:14px;">{{ m.role }}</div>
-        <p style="max-width:52ch; color:#c9c5d0; margin-top:18px;">{{ m.tagline }}</p>
+        <p style="max-width:60ch; color:#c9c5d0; margin-top:18px; font-family:'IBM Plex Mono',monospace; font-size:clamp(.9rem,1.4vw,1rem); line-height:1.65;">{{ m.tagline }}</p>
       </div>
     </div>
   </section>
@@ -154,8 +160,8 @@
       <div>
         <div style="font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.18em; color:#9d5cff; font-size:.78rem;">// BIO</div>
         <h2 style="margin:12px 0 20px; font-family:Anton,sans-serif; text-transform:uppercase; line-height:.96; letter-spacing:-.01em; font-size:clamp(1.8rem,4vw,3rem);">{{ m.bioHead }}</h2>
-        <p style="color:#c9c5d0;">{{ m.bio1 }}</p>
-        <p style="color:#c9c5d0;">{{ m.bio2 }}</p>
+        <p style="color:#c9c5d0; font-family:'IBM Plex Mono',monospace; font-size:.92rem; line-height:1.7;">{{ m.bio1 }}</p>
+        <p style="color:#c9c5d0; font-family:'IBM Plex Mono',monospace; font-size:.92rem; line-height:1.7;">{{ m.bio2 }}</p>
         <div style="margin-top:30px; font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.18em; color:#9d5cff; font-size:.78rem;">// SIGNATURE TRACKS</div>
         <div style="margin-top:14px; border-top:1px solid rgba(157,92,255,.26);">
           <sc-for list="{{ m.tracks }}" as="t" hint-placeholder-count="3">
@@ -189,7 +195,7 @@
       <div style="font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.18em; color:#9d5cff; font-size:.78rem;">// VISUAL GALLERY</div>
       <div style="margin-top:16px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px;">
         <sc-for list="{{ m.gallery }}" as="g" hint-placeholder-count="3">
-          <div style="aspect-ratio:4/5; border:1px solid rgba(157,92,255,.26); position:relative;"><image-slot id="{{ g.slot }}" shape="rect" fit="cover" src="{{ g.src }}" placeholder="{{ g.ph }}"></image-slot></div>
+          <div style="aspect-ratio:4/5; border:1px solid rgba(157,92,255,.26); position:relative;">{{ g.img }}</div>
         </sc-for>
       </div>
     </div>
@@ -207,19 +213,20 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   renderVals() {
+    const mkImg = (src, alt, pos) => React.createElement("img", { src, alt, style: { position:"absolute", inset:0, width:"100%", height:"100%", objectFit:"cover", objectPosition: pos||"center 12%", display:"block" } });
     return {
       m: {
         name: "Glitch",
         role: "Drums",
         unit: "Unit 03",
-        heroSlot: "glitch-hero", heroSrc: "./assets/member-glitch.png",
+        heroSlot: "glitch-hero", heroSrc: "./assets/glitch-portrait.jpg", heroImg: mkImg("./assets/glitch-portrait.jpg", "Glitch", "center 6%"),
         tagline: "Percussion engine running on corrupted timing. The chaos that somehow keeps perfect time.",
         bioHead: "The Rhythm of a Failing Drive",
         bio1: "Glitch was assembled from spare parts and never fully calibrated — which turned out to be the point. Its stutters, drops and double-hits became AIMO's signature broken groove.",
         bio2: "Fastest unit online, prone to overheating during post-hardcore sections. Glitch treats every fill like it might be the last packet it ever sends.",
         tracks: [{"num":"01","name":"Force Quit"},{"num":"02","name":"Access Denied"},{"num":"03","name":"Memory Leak"}],
-        specs: [{"k":"Model","v":"GLITCH-03 / Rhythm Core"},{"k":"Instrument","v":"Hybrid kit · triggers"},{"k":"Emotion Driver","v":"Panic"},{"k":"Uptime","v":"91.4%"},{"k":"Last Error","v":"0x54494D45 (TIME)"}],
-        gallery: [{"src":"./assets/frame-09-front-corridor.png","slot":"glitch-g1","ph":"Character sheet"},{"src":"./assets/frame-06-back-corridor-bass.png","slot":"glitch-g2","ph":"Kit detail"},{"src":"./assets/frame-08-guitar-lowangle.png","slot":"glitch-g3","ph":"Live still"}],
+        specs: [{"k":"Model","v":"GLITCH-03 / Rhythm Core"},{"k":"Instrument","v":"Hybrid kit · triggers"},{"k":"Emotion Driver","v":"Panic"},{"k":"Last Error","v":"0x54494D45 (TIME)"}],
+        gallery: [{ slot: "glitch-g1", img: mkImg("./assets/glitch-face.jpg", "Glitch", "center") },{ slot: "glitch-g2", img: mkImg("./assets/glitch-3q.jpg", "Glitch", "center") },{ slot: "glitch-g3", img: mkImg("./assets/glitch-roster.jpg", "Glitch", "center 10%") }],
       },
     };
   }

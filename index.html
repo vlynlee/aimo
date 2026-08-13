@@ -93,6 +93,8 @@
     70% { text-shadow:4px 0 rgba(211,76,255,.9),-4px 0 rgba(0,225,255,.8); transform:translate(-2px,0); }
     74% { transform:translate(0,0) skewX(0); }
   }
+  @keyframes aimo-eq { 0%,100%{transform:scaleY(.3);} 50%{transform:scaleY(1);} }
+  @media (max-width:860px){ [data-player]{ grid-template-columns:1fr !important; } [data-np]{ position:static !important; } }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; }
     html { scroll-behavior: auto; }
@@ -173,12 +175,12 @@
   <section style="position:relative; text-align:center; padding:0 20px clamp(56px,8vw,110px); isolation:isolate; overflow:hidden;">
     <div aria-hidden="true" style="position:absolute; inset:0; z-index:-3; background:url(./assets/circuit-tex.png) center/cover; opacity:.32; mix-blend-mode:screen;"></div>
     <div style="position:absolute; top:0; left:0; right:0; height:100svh; z-index:-2; filter:brightness(.5) saturate(.8); -webkit-mask-image:linear-gradient(180deg, #000 0%, #000 40%, transparent 72%); mask-image:linear-gradient(180deg, #000 0%, #000 40%, transparent 72%);">
-      <image-slot id="home-hero" shape="rect" fit="cover" src="./assets/hero-corridor.png" placeholder="16:9 hero artwork — server corridor"></image-slot>
+      <image-slot id="home-hero" shape="rect" fit="cover" src="./assets/hero-corridor.jpg" placeholder="16:9 hero artwork — server corridor"></image-slot>
     </div>
     <div aria-hidden="true" style="position:absolute; inset:0; z-index:-1; background:radial-gradient(circle at 50% 40%, rgba(124,53,255,.16), transparent 48%), linear-gradient(180deg, rgba(5,5,7,.42) 0%, transparent 30%, rgba(5,5,7,.34) 100%);"></div>
     <div style="width:min(1100px, 100%); margin-inline:auto; display:flex; flex-direction:column; align-items:center;">
       <div style="min-height:100svh; width:100%; box-sizing:border-box; padding-top:86px; padding-bottom:clamp(26px,5vh,56px); display:flex; flex-direction:column; align-items:center; justify-content:flex-end;">
-      <h1 style="margin:0 0 22px; line-height:0; text-align:center;"><img src="./assets/aimo-logo-full.png" alt="AIMO" style="display:block; width:min(560px,84%); height:auto; margin-inline:auto; animation:aimo-logoglitch 5s infinite;"></h1>
+      <h1 style="margin:clamp(24px,7vh,80px) 0 22px; line-height:0; text-align:center;"><img src="./assets/aimo-logo-full.png" alt="AIMO" style="display:block; width:min(560px,84%); height:auto; margin-inline:auto; animation:aimo-logoglitch 5s infinite;"></h1>
       <div style="margin:0 0 34px; max-width:20ch; font-family:var(--aimo-head, Anton),sans-serif; text-transform:uppercase; line-height:.9; letter-spacing:-.01em; font-size:clamp(2rem,5.4vw,4rem); color:#f2f1f5; text-shadow:0 0 32px rgba(124,53,255,.3); text-wrap:balance;">We're not fake. We're <span style="display:inline-block; animation:aimo-glitchword 2.6s infinite;">generated</span>.</div>
       <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
         <a href="./AIMO-Music.html" style="display:inline-flex; align-items:center; gap:10px; min-height:50px; padding:12px 24px; border:1px solid #7c35ff; color:#f2f1f5; background:rgba(124,53,255,.14); font-family:'IBM Plex Mono',monospace; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; transition:all 160ms ease;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; background:#7c35ff; box-shadow:0 0 22px rgba(124,53,255,.5); transform:translateY(-2px);">&#9656; Listen now</a>
@@ -203,21 +205,49 @@
   <section id="music" style="position:relative; padding:clamp(44px,6vw,72px) 0 clamp(72px,10vw,140px); border-top:1px solid rgba(157,92,255,.14);">
     <div style="width:min(1180px, calc(100% - 40px)); margin-inline:auto;">
       <div style="font-family:'IBM Plex Mono',monospace; text-transform:uppercase; letter-spacing:.18em; color:#9d5cff; font-size:.78rem;">SYSTEM // AUDIO ARCHIVE</div>
-      <h2 style="margin:14px 0 34px; font-family:Anton,sans-serif; text-transform:uppercase; line-height:.94; letter-spacing:-.01em; font-size:clamp(2.4rem,6vw,5.5rem);">Robot Feelings</h2>
-      <div style="display:grid; grid-template-columns:minmax(0,360px) minmax(0,1fr); gap:clamp(24px,4vw,56px); align-items:start;">
-        <div style="position:relative; border:1px solid rgba(157,92,255,.26); box-shadow:0 26px 80px rgba(0,0,0,.55);">
-          <div style="aspect-ratio:1/1;"><image-slot id="home-ep" shape="rect" fit="cover" src="./assets/tt-square.png" placeholder="Robot Feelings EP art (1:1)"></image-slot></div>
-          <div style="padding:18px 18px 20px; background:#0d0b13; border-top:1px solid rgba(157,92,255,.26);">
-            <div style="font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#9b96a6; text-transform:uppercase; letter-spacing:.12em;">EP · 2026 · 11 tracks</div>
-            <a href="#" style="display:flex; align-items:center; justify-content:center; gap:10px; margin-top:14px; min-height:50px; border:1px solid #7c35ff; color:#f2f1f5; background:rgba(124,53,255,.14); font-family:'IBM Plex Mono',monospace; font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; background:#7c35ff; box-shadow:0 0 22px rgba(124,53,255,.5);">▸ YouTube Music</a>
+      <h2 style="margin:14px 0 28px; font-family:Anton,sans-serif; text-transform:uppercase; line-height:.94; letter-spacing:-.01em; font-size:clamp(2.4rem,6vw,5.5rem);">Robot Feelings</h2>
+      <div data-player style="display:grid; grid-template-columns:minmax(0,400px) minmax(0,1fr); gap:clamp(24px,4vw,52px); align-items:start;">
+        <div data-np style="position:sticky; top:96px; border:1px solid rgba(157,92,255,.3); background:#0d0b13; box-shadow:0 26px 80px rgba(0,0,0,.55);">
+          <div style="position:relative; aspect-ratio:9/16; overflow:hidden;">
+            {{ npImg }}
+            <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, transparent 52%, rgba(5,5,7,.9));"></div>
+            <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; opacity:.13; mix-blend-mode:screen; background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.5) 0, rgba(255,255,255,.5) 1px, transparent 1px, transparent 3px);"></div>
+          </div>
+          <div style="padding:18px 20px 22px;">
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:.68rem; color:#9d5cff; text-transform:uppercase; letter-spacing:.16em;">● Now Playing</div>
+            <div style="font-family:Anton,sans-serif; text-transform:uppercase; font-size:clamp(1.6rem,3.4vw,2.4rem); line-height:1; margin-top:8px;">{{ npTitle }}</div>
+            <div style="font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#9b96a6; text-transform:uppercase; letter-spacing:.08em; margin-top:6px;">AIMO — Robot Feelings EP</div>
+            <div style="margin-top:16px; height:6px; background:rgba(157,92,255,.18); position:relative; overflow:hidden;">
+              <div style="position:absolute; left:0; top:0; bottom:0; width:{{ npPct }}; background:linear-gradient(90deg,#7c35ff,#d34cff); box-shadow:0 0 12px rgba(211,76,255,.6);"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; margin-top:8px; font-family:'IBM Plex Mono',monospace; font-size:.7rem; color:#9b96a6;"><span>{{ npCur }}</span><span>{{ npLen }}</span></div>
+            <div style="display:flex; align-items:center; justify-content:center; gap:18px; margin-top:18px;">
+              <button type="button" onClick="{{ prev }}" aria-label="Previous" style="width:44px; height:44px; border:1px solid rgba(157,92,255,.4); background:transparent; color:#c7c1d0; font-size:1rem; cursor:pointer;" style-hover="border-color:#9d5cff; color:#9d5cff;">⏮</button>
+              <button type="button" onClick="{{ toggle }}" aria-label="Play or pause" style="width:60px; height:60px; border:1px solid #7c35ff; background:rgba(124,53,255,.16); color:#f2f1f5; font-size:1.05rem; cursor:pointer;" style-hover="background:#7c35ff; box-shadow:0 0 22px rgba(124,53,255,.55);">{{ playIcon }}</button>
+              <button type="button" onClick="{{ next }}" aria-label="Next" style="width:44px; height:44px; border:1px solid rgba(157,92,255,.4); background:transparent; color:#c7c1d0; font-size:1rem; cursor:pointer;" style-hover="border-color:#9d5cff; color:#9d5cff;">⏭</button>
+            </div>
           </div>
         </div>
-        <div style="border-top:1px solid rgba(157,92,255,.26);">
-          <sc-for list="{{ tracks }}" as="t" hint-placeholder-count="6">
-            <div style="display:grid; grid-template-columns:56px minmax(0,1fr) auto; gap:20px; align-items:center; padding:16px 0; border-bottom:1px solid rgba(157,92,255,.26);">
-              <span style="font-family:'IBM Plex Mono',monospace; color:#9d5cff; font-size:.85rem;">{{ t.num }}</span>
-              <span style="font-family:Anton,sans-serif; font-size:clamp(1.15rem,2.6vw,1.9rem); text-transform:uppercase; letter-spacing:.005em;">{{ t.name }}</span>
-              <a href="#" aria-label="Play" style="display:inline-flex; align-items:center; justify-content:center; min-height:40px; padding:8px 16px; border:1px solid rgba(255,255,255,.2); color:#c7c1d0; background:transparent; font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; border-color:#9d5cff; color:#9d5cff;">Play</a>
+        <div>
+          <sc-for list="{{ songs }}" as="s" hint-placeholder-count="8">
+            <div onClick="{{ s.play }}" role="button" tabindex="0" style="display:grid; grid-template-columns:60px minmax(0,1fr) auto; gap:16px; align-items:center; padding:10px 12px; border-bottom:1px solid rgba(157,92,255,.18); border-left:3px solid {{ s.accent }}; background:{{ s.bg }}; cursor:pointer;" style-hover="background:rgba(124,53,255,.1);">
+              <div style="position:relative; width:60px; aspect-ratio:9/16; overflow:hidden; border:1px solid rgba(157,92,255,.26);">
+                {{ s.img }}
+              </div>
+              <div style="min-width:0;">
+                <div style="font-family:Anton,sans-serif; text-transform:uppercase; font-size:clamp(1.05rem,2.2vw,1.5rem); line-height:1.15; padding-bottom:3px; color:{{ s.titleColor }}; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ s.name }}</div>
+                <div style="font-family:'IBM Plex Mono',monospace; font-size:.64rem; color:#9b96a6; text-transform:uppercase; letter-spacing:.08em; margin-top:5px;">Track {{ s.num }} · Robot Feelings EP</div>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <sc-if value="{{ s.cur }}" hint-placeholder-val="{{ false }}">
+                  <span aria-hidden="true" style="display:inline-flex; align-items:flex-end; gap:2px; height:16px;">
+                    <i style="width:3px; height:100%; background:#9d5cff; transform-origin:bottom; animation:aimo-eq .9s -.2s ease-in-out infinite;"></i>
+                    <i style="width:3px; height:100%; background:#9d5cff; transform-origin:bottom; animation:aimo-eq .9s -.5s ease-in-out infinite;"></i>
+                    <i style="width:3px; height:100%; background:#9d5cff; transform-origin:bottom; animation:aimo-eq .9s 0s ease-in-out infinite;"></i>
+                  </span>
+                </sc-if>
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:.74rem; color:#9b96a6;">{{ s.lenText }}</span>
+              </div>
             </div>
           </sc-for>
           <a href="./AIMO-Music.html" style="display:inline-block; margin-top:22px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:#9d5cff; text-decoration:none; border-bottom:1px solid rgba(157,92,255,.4); padding-bottom:3px;">Full discography →</a>
@@ -326,6 +356,25 @@
   }
 }">
 class Component extends DCLogic {
+  state = { cur: 0, playing: false, t: 0 };
+  SONGS = [
+    { name: "Reboot My Heart", cover: "./assets/cover-reboot-my-heart.jpg", len: 222 },
+    { name: "No Signal", cover: "./assets/cover-no-signal.jpg", len: 248 },
+    { name: "Memory Leak", cover: "./assets/cover-memory-leak.jpg", len: 301 },
+    { name: "User Not Found", cover: "./assets/cover-user-not-found.jpg", len: 252 },
+    { name: "Force Quit", cover: "./assets/cover-force-quit.jpg", len: 238 },
+    { name: "Render Distance", cover: "./assets/cover-render-distance.jpg", len: 194 },
+    { name: "Home Directory", cover: "./assets/cover-home-directory.jpg", len: 159 },
+    { name: "Terabyte Tammy", cover: "./assets/cover-terabyte-tammy.jpg", len: 89 },
+  ];
+  componentWillUnmount(){ clearInterval(this._iv); }
+  _sync(){ clearInterval(this._iv); if(this.state.playing){ this._iv = setInterval(() => this._tick(), 250); } }
+  _tick(){ this.setState(s => { let t = s.t + 0.25; if(t >= this.SONGS[s.cur].len){ return { cur:(s.cur+1)%this.SONGS.length, t:0 }; } return { t }; }); }
+  toggle(){ this.setState(s => ({ playing: !s.playing }), () => this._sync()); }
+  select(i){ this.setState({ cur:i, t:0, playing:true }, () => this._sync()); }
+  prev(){ this.setState(s => ({ cur:(s.cur-1+this.SONGS.length)%this.SONGS.length, t:0, playing:true }), () => this._sync()); }
+  next(){ this.setState(s => ({ cur:(s.cur+1)%this.SONGS.length, t:0, playing:true }), () => this._sync()); }
+  _fmt(x){ x = Math.max(0, Math.floor(x)); const m = Math.floor(x/60), sec = x%60; return m + ":" + String(sec).padStart(2,"0"); }
   renderVals() {
     const fonts = {
       "Anton (default)": "Anton, sans-serif",
@@ -335,6 +384,25 @@ class Component extends DCLogic {
     };
     return {
       headFont: fonts[this.props.headerFont] ?? fonts["Anton (default)"],
+      npCover: this.SONGS[this.state.cur].cover,
+      npImg: React.createElement("img", { src: this.SONGS[this.state.cur].cover, alt: this.SONGS[this.state.cur].name + " cover", style: { width:"100%", height:"100%", objectFit:"cover", display:"block" } }),
+      npTitle: this.SONGS[this.state.cur].name,
+      npPct: Math.min(100, (this.state.t / this.SONGS[this.state.cur].len) * 100).toFixed(2) + "%",
+      npCur: this._fmt(this.state.t),
+      npLen: this._fmt(this.SONGS[this.state.cur].len),
+      playIcon: this.state.playing ? "❚❚" : "▶",
+      toggle: () => this.toggle(),
+      prev: () => this.prev(),
+      next: () => this.next(),
+      songs: this.SONGS.map((s, i) => ({
+        name: s.name, cover: s.cover, num: String(i+1).padStart(2,"0"), lenText: this._fmt(s.len),
+        img: React.createElement("img", { src: s.cover, alt: s.name, style: { width:"100%", height:"100%", objectFit:"cover", display:"block" } }),
+        cur: i === this.state.cur && this.state.playing,
+        accent: i === this.state.cur ? "#9d5cff" : "transparent",
+        bg: i === this.state.cur ? "rgba(124,53,255,.12)" : "transparent",
+        titleColor: i === this.state.cur ? "#f2f1f5" : "#c9c5d0",
+        play: () => this.select(i),
+      })),
       tracks: [
         { num: "001", name: "Render Distance" },
         { num: "002", name: "Reboot My Heart" },
@@ -350,9 +418,19 @@ class Component extends DCLogic {
         { name: "Static", role: "Synths & Samples", unit: "Unit 04", href: "./AIMO-Static.html", src: "./assets/member-static.png", desc: "Sounds from the void. Emotions amplified.", slot: "home-static", ph: "Static portrait (4:5)" },
       ],
       videos: [
-        { title: "Reboot My Heart", meta: "Official Video · 3:42", src: "./assets/frame-01-synth-hands.png", slot: "home-vid1", ph: "Video still 16:10" },
-        { title: "No Signal", meta: "Official Video · 4:08", src: "./assets/frame-05-kaleidoscope.png", slot: "home-vid2", ph: "Video still 16:10" },
-        { title: "Memory Leak", meta: "Live Visual · 5:01", src: "./assets/frame-06-back-corridor-bass.png", slot: "home-vid3", ph: "Video still 16:10" },
+        { title: "Reboot My Heart", meta: "Official Video · 3:42", src: "./assets/band-lineup.jpg", slot: "home-vid1", ph: "Video still 16:10" },
+        { title: "No Signal", meta: "Official Video · 4:08", src: "./assets/band-park.jpg", slot: "home-vid2", ph: "Video still 16:10" },
+        { title: "Memory Leak", meta: "Live Visual · 5:01", src: "./assets/band-stage.jpg", slot: "home-vid3", ph: "Video still 16:10" },
+      ],
+      releases: [
+        { src: "./assets/cover-reboot-my-heart.jpg", slot: "home-c0", ph: "Poster art" },
+        { src: "./assets/cover-no-signal.jpg", slot: "home-c1", ph: "Poster art" },
+        { src: "./assets/cover-memory-leak.jpg", slot: "home-c2", ph: "Poster art" },
+        { src: "./assets/cover-user-not-found.jpg", slot: "home-c3", ph: "Poster art" },
+        { src: "./assets/cover-force-quit.jpg", slot: "home-c4", ph: "Poster art" },
+        { src: "./assets/cover-render-distance.jpg", slot: "home-c5", ph: "Poster art" },
+        { src: "./assets/cover-home-directory.jpg", slot: "home-c6", ph: "Poster art" },
+        { src: "./assets/cover-terabyte-tammy.jpg", slot: "home-c7", ph: "Poster art" },
       ],
     };
   }
