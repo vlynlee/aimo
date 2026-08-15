@@ -95,6 +95,7 @@
   .aimo-menu img{ width:72px; height:auto; margin-bottom:14px; filter:drop-shadow(0 0 18px rgba(124,53,255,.6)); }
   .aimo-menu a{ font-family:Anton, sans-serif; text-transform:uppercase; font-size:2.1rem; letter-spacing:.02em; color:#f2f1f5; text-decoration:none; text-shadow:0 0 20px rgba(124,53,255,.3); }
   .aimo-menu a.on, .aimo-menu a:hover{ color:#9d5cff; }
+  @media (max-width:860px){ [data-disco]{ grid-template-columns:1fr !important; } [data-ep]{ position:static !important; width:100%; max-width:320px; margin:0 auto; } }
   @media (max-width:860px){ .aimo-navgroup{ display:none !important; } .aimo-burger{ display:block !important; } header img[alt="AIMO"]{ height:46px !important; } }
 </style>
 </helmet>
@@ -109,13 +110,11 @@
     </div>
 
   <header style="position:fixed; top:0; left:0; right:0; z-index:300; border-bottom:1px solid rgba(157,92,255,.15); background:rgba(5,5,7,.62); backdrop-filter:blur(18px);">
-    <div style="position:relative; width:min(1180px, calc(100% - 40px)); margin-inline:auto; height:78px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:24px;">
-      <nav class="aimo-navgroup" aria-label="Primary" style="display:flex; gap:24px; justify-content:flex-start; font-family:'IBM Plex Mono',monospace; font-size:.74rem; text-transform:uppercase; letter-spacing:.14em;">
+    <div style="position:relative; width:min(1180px, calc(100% - 40px)); margin-inline:auto; height:78px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="./index.html" style="display:inline-flex; align-items:center;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite;"><img src="./assets/aimo-face.png" alt="AIMO" style="height:56px; width:auto; display:block; filter:drop-shadow(0 0 16px rgba(124,53,255,.55));"></a>
+      <nav class="aimo-navgroup" aria-label="Primary" style="display:flex; gap:28px; align-items:center; font-family:'IBM Plex Mono',monospace; font-size:.74rem; text-transform:uppercase; letter-spacing:.14em;">
         <a href="./AIMO-Music.html" style="color:#9d5cff; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#c5a8ff;">Music</a>
         <a href="./AIMO-Videos.html" style="color:#c7c1d0; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#9d5cff;">Videos</a>
-      </nav>
-      <a href="./index.html" style="display:inline-flex; align-items:center; justify-self:center; grid-column:2;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite;"><img src="./assets/aimo-face.png" alt="AIMO" style="height:62px; width:auto; display:block; filter:drop-shadow(0 0 16px rgba(124,53,255,.55));"></a>
-      <nav class="aimo-navgroup" aria-label="Secondary" style="display:flex; gap:24px; justify-content:flex-end; font-family:'IBM Plex Mono',monospace; font-size:.74rem; text-transform:uppercase; letter-spacing:.14em;">
         <a href="./AIMO-Band.html" style="color:#c7c1d0; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#9d5cff;">Band</a>
         <a href="./AIMO-Contact.html" style="color:#c7c1d0; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; color:#9d5cff;">Contact</a>
       </nav>
@@ -140,25 +139,9 @@
   </section>
 
   <section style="position:relative; padding-block:clamp(40px,6vw,80px);">
-    <div style="width:min(1180px, calc(100% - 40px)); margin-inline:auto; display:grid; grid-template-columns:minmax(0,380px) minmax(0,1fr); gap:clamp(24px,4vw,56px); align-items:start;">
-      <div style="position:sticky; top:96px; border:1px solid rgba(157,92,255,.26); box-shadow:0 26px 80px rgba(0,0,0,.55);">
-        <div style="aspect-ratio:1/1;"><image-slot id="music-ep" shape="rect" fit="cover" src="./assets/aimo-square.jpg" placeholder="Robot Feelings EP art (1:1)"></image-slot></div>
-        <div style="padding:20px; background:#0d0b13; border-top:1px solid rgba(157,92,255,.26);">
-          <div style="font-family:Anton,sans-serif; text-transform:uppercase; font-size:2rem; line-height:1;">Robot Feelings</div>
-          <div style="font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:#9b96a6; text-transform:uppercase; letter-spacing:.12em; margin-top:8px;">EP · 2026 · 12 tracks · 41:17</div>
-          <a href="#" style="display:flex; align-items:center; justify-content:center; gap:10px; margin-top:16px; min-height:50px; border:1px solid #7c35ff; color:#f2f1f5; background:rgba(124,53,255,.14); font-family:'IBM Plex Mono',monospace; font-size:.82rem; letter-spacing:.06em; text-transform:uppercase; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; background:#7c35ff; box-shadow:0 0 22px rgba(124,53,255,.5);">▸ YouTube Music</a>
-        </div>
-      </div>
-      <div style="border-top:1px solid rgba(157,92,255,.26);">
-        <sc-for list="{{ tracks }}" as="t" hint-placeholder-count="12">
-          <div style="display:grid; grid-template-columns:40px 50px minmax(0,1fr) auto auto; gap:16px; align-items:center; padding:12px 0; border-bottom:1px solid rgba(157,92,255,.26);">
-            <span style="font-family:'IBM Plex Mono',monospace; color:#9d5cff; font-size:.82rem;">{{ t.num }}</span>
-            <div style="width:50px; aspect-ratio:9/16; position:relative; overflow:hidden; border:1px solid rgba(157,92,255,.26);"><image-slot id="{{ t.slot }}" shape="rect" fit="cover" src="{{ t.art }}" placeholder="art"></image-slot></div>
-            <span style="font-family:Anton,sans-serif; font-size:clamp(1.1rem,2.4vw,1.75rem); text-transform:uppercase;">{{ t.name }}</span>
-            <span style="font-family:'IBM Plex Mono',monospace; color:#9b96a6; font-size:.72rem;">{{ t.len }}</span>
-            <a href="#" style="display:inline-flex; align-items:center; justify-content:center; min-height:38px; padding:7px 14px; border:1px solid rgba(255,255,255,.2); color:#c7c1d0; background:transparent; font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; text-decoration:none;" style-hover="animation:aimo-hoverglitch .32s steps(4,end) infinite; border-color:#9d5cff; color:#9d5cff;">Play</a>
-          </div>
-        </sc-for>
+    <div data-disco style="width:min(1180px, calc(100% - 40px)); margin-inline:auto;">
+      <div style="border:1px solid rgba(157,92,255,.26); background:#0d0b13; box-shadow:0 26px 80px rgba(0,0,0,.55); padding:clamp(14px,2vw,22px);">
+        <iframe title="Robot Feelings — AIMO on Spotify" src="https://open.spotify.com/embed/album/0VQifsXonV3ZTXerNTkan7?utm_source=generator&theme=0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="border:0; display:block; width:100%; height:clamp(420px,70vh,640px);"></iframe>
       </div>
     </div>
   </section>
@@ -177,18 +160,18 @@ class Component extends DCLogic {
   renderVals() {
     return {
       tracks: [
-        { num: "01", name: "Render Distance", len: "3:14", slot: "mt1", art: "./assets/cover-render-distance.jpg" },
-        { num: "02", name: "Reboot My Heart", len: "3:42", slot: "mt2", art: "./assets/cover-reboot-my-heart.jpg" },
-        { num: "03", name: "No Signal", len: "4:08", slot: "mt3", art: "./assets/cover-no-signal.jpg" },
-        { num: "04", name: "Safe Mode", len: "2:57", slot: "mt4", art: "./assets/aimo-square.jpg" },
-        { num: "05", name: "Memory Leak", len: "5:01", slot: "mt5", art: "./assets/cover-memory-leak.jpg" },
-        { num: "06", name: "Home Is a Data Center", len: "3:33", slot: "mt6", art: "./assets/aimo-square.jpg" },
-        { num: "07", name: "Cached Feelings", len: "3:20", slot: "mt7", art: "./assets/aimo-square.jpg" },
-        { num: "08", name: "Access Denied", len: "2:44", slot: "mt8", art: "./assets/aimo-square.jpg" },
-        { num: "09", name: "Force Quit", len: "3:58", slot: "mt9", art: "./assets/cover-force-quit.jpg" },
-        { num: "10", name: "User Not Found", len: "4:12", slot: "mt10", art: "./assets/cover-user-not-found.jpg" },
-        { num: "11", name: "Home Directory", len: "2:39", slot: "mt11", art: "./assets/cover-home-directory.jpg" },
-        { num: "12", name: "Terabyte Tammy", len: "1:29", slot: "mt12", art: "./assets/cover-terabyte-tammy.jpg" },
+        { num: "01", name: "Reboot My Heart", len: "3:42", slot: "mt2", art: "./assets/cover-reboot-my-heart.jpg", sp: "https://open.spotify.com/track/4AYuv4I410t03v97QVBg71" },
+        { num: "02", name: "Access Denied", len: "2:44", slot: "mt8", art: "./assets/aimo-square.jpg", sp: "https://open.spotify.com/track/28AoL2JFkslMo9KT5iZZIw" },
+        { num: "03", name: "Safe Mode", len: "2:57", slot: "mt4", art: "./assets/aimo-square.jpg", sp: "https://open.spotify.com/track/735xwKJkw2r3sDMwd5Ue2W" },
+        { num: "04", name: "Memory Leak", len: "5:01", slot: "mt5", art: "./assets/cover-memory-leak.jpg", sp: "https://open.spotify.com/track/2ikWnO0sF4FvmnAhXq4kcR" },
+        { num: "05", name: "Terabyte Tammy", len: "1:29", slot: "mt12", art: "./assets/cover-terabyte-tammy.jpg", sp: "https://open.spotify.com/track/4ezNu0Rb4NPcJuWXlUk0j6" },
+        { num: "06", name: "User Not Found", len: "4:12", slot: "mt10", art: "./assets/cover-user-not-found.jpg", sp: "https://open.spotify.com/track/34TRU34JU4BD73k0ET2Udu" },
+        { num: "07", name: "Home Directory", len: "2:39", slot: "mt11", art: "./assets/cover-home-directory.jpg", sp: "https://open.spotify.com/track/6vVWX6qfwTL64P0JMIhxra" },
+        { num: "08", name: "Force Quit", len: "3:58", slot: "mt9", art: "./assets/cover-force-quit.jpg", sp: "https://open.spotify.com/track/4vfDFKMbJkbWPiARsFV6Np" },
+        { num: "09", name: "Render Distance", len: "3:14", slot: "mt1", art: "./assets/cover-render-distance.jpg", sp: "https://open.spotify.com/track/7MwIwwIOMX0V85CYgClgWM" },
+        { num: "10", name: "No Signal", len: "4:08", slot: "mt3", art: "./assets/cover-no-signal.jpg", sp: "https://open.spotify.com/track/3jdhki2gWsffMk7o5DMraY" },
+        { num: "11", name: "Home Is a Data Center", len: "3:33", slot: "mt6", art: "./assets/aimo-square.jpg", sp: "https://open.spotify.com/track/3sLAWsmLWzmrDYIbcJa7Qq" },
+        { num: "12", name: "Cached Feelings", len: "3:20", slot: "mt7", art: "./assets/aimo-square.jpg", sp: "https://open.spotify.com/album/0VQifsXonV3ZTXerNTkan7" },
       ],
     };
   }
